@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Player Piano</title>
+  <title>Music Box</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
   <link href="css/main.css" rel="stylesheet">
   <script type="text/javascript" src="node_modules/angular/angular.js"></script>
   <script type="text/javascript" src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
   <script type="text/javascript" src="js/angularPlayerApp.js"></script>
+  <script type="text/javascript" src="js/sidebar/sidebar.js"></script>
+  <script type="text/javascript" src="js/albums/albums.js"></script>
+  <script type="text/javascript" src="js/artists/artists.js"></script>
   <script type="text/javascript" src="index.js"></script>
 </head>
 <body ng-app="Player">
@@ -15,12 +18,10 @@
   <sidebar></sidebar>
 
   <div style="float: left; position: absolute; left: 210px; right: 0; top: 0; bottom: 50px">
-    <!-- <div class="row">
-      <ul id="addressbar" class="breadcrumb"></ul>
-    </div> -->
-    <div class="row" style="background: #FFF; -webkit-border-radius: 2px; margin: -5px 1px 0 -19px; height: 100%; overflow: auto">
+<!--     <div class="row" id="selector-container">
       <ul style="margin: 5px;" id="files"></ul>
-    </div>
+    </div> -->
+    <div id="main" ui-view></div>
   </div>
   <footer class="navbar-fixed-bottom">
     <div class="controls">
