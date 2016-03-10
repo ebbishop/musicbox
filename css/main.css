@@ -2,6 +2,14 @@ footer{
   height: 50px;
 }
 
+#selector-container{
+  background: #FFF;
+  -webkit-border-radius: 2px;
+  margin: -5px 1px 0 -19px;
+  height: 100%;
+  overflow: auto
+}
+
 #all-content{
   position: absolute;
   left: 10px;
