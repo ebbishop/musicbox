@@ -1,37 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Player Piano</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-<link href="css/main.css" rel="stylesheet">
-<script type="text/javascript" src="js/jquery-1.7.2.js"></script>
-<script type="text/javascript" src="main.js"></script>
+  <title>Player Piano</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+  <script type="text/javascript" src="node_modules/angular/angular.js"></script>
+  <script type="text/javascript" src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+  <script type="text/javascript" src="js/angularPlayerApp.js"></script>
+  <script type="text/javascript" src="index.js"></script>
 </head>
-<body>
+<body ng-app="Player">
 <div id="all-content">
-  <div class="well" id="sidebar-container">
-    <ul class="nav nav-list" id="sidebar">
-      <li class="nav-header">Browse by</li>
-      <li class="active">
-        <a href="#" nw-path="~/"><div class="icon-white glyphicon glyphicon-book"></div> Album</a>
-      </li>
-      <li>
-        <a href="#" nw-path="~/Documents"><div class="glyphicon glyphicon-user "></div> Artist</a>
-      </li>
-      <li>
-        <a href="#" nw-path="~/Pictures"><div class="glyphicon glyphicon-list-alt"></div> Playlist</a>
-      </li>
-      <li class="nav-header">Spotify</li>
-      <li id="get-spotify">
-        <a href="#" nw-call="about" onclick="App.about()"><div class="glyphicon glyphicon-download-alt"></div> Download today's top 5</a>
-      </li>
-      <li class="nav-header">Settings</li>
-      <li>
-        <a href="#"><div class="glyphicon glyphicon-cog"></div></a>
-      </li>
-    </ul>
-  </div>
+  <sidebar></sidebar>
 
   <div style="float: left; position: absolute; left: 210px; right: 0; top: 0; bottom: 50px">
     <!-- <div class="row">
