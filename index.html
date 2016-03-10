@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Player Piano</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="main.js"></script>
+</head>
+<body>
+<div id="all-content">
+  <div class="well" id="sidebar-container">
+    <ul class="nav nav-list" id="sidebar">
+      <li class="nav-header">Browse by</li>
+      <li class="active">
+        <a href="#" nw-path="~/"><div class="icon-white glyphicon glyphicon-book"></div> Album</a>
+      </li>
+      <li>
+        <a href="#" nw-path="~/Documents"><div class="glyphicon glyphicon-user "></div> Artist</a>
+      </li>
+      <li>
+        <a href="#" nw-path="~/Pictures"><div class="glyphicon glyphicon-list-alt"></div> Playlist</a>
+      </li>
+      <li class="nav-header">Spotify</li>
+      <li id="get-spotify">
+        <a href="#" nw-call="about" onclick="App.about()"><div class="glyphicon glyphicon-download-alt"></div> Download today's top 5</a>
+      </li>
+      <li class="nav-header">Settings</li>
+      <li>
+        <a href="#"><div class="glyphicon glyphicon-cog"></div></a>
+      </li>
+    </ul>
+  </div>
+
+  <div style="float: left; position: absolute; left: 210px; right: 0; top: 0; bottom: 50px">
+    <!-- <div class="row">
+      <ul id="addressbar" class="breadcrumb"></ul>
+    </div> -->
+    <div class="row" style="background: #FFF; -webkit-border-radius: 2px; margin: -5px 1px 0 -19px; height: 100%; overflow: auto">
+      <ul style="margin: 5px;" id="files"></ul>
+    </div>
+  </div>
+  <footer class="navbar-fixed-bottom">
+    <div class="controls">
+      <button class="glyphicon glyphicon-step-backward"></button>
+      <button class="glyphicon glyphicon-play"></button>
+      <button class="glyphicon glyphicon-step-forward"></button>
+    </div>
+    <div>
+      <div class="progress-bar"></div>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

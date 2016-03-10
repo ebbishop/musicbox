@@ -1,0 +1,31 @@
+footer{
+  height: 50px;
+}
+
+#all-content{
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  bottom: 10px;
+  right: 10px;
+  margin: 3px;
+}
+
+#get-spotify{
+  word-wrap: break-word;
+}
+
+#sidebar-container{
+  float: left;
+  width: 160px;
+  padding: 8px;
+}
+
+#selector{
+  float: left;
+  position: absolute;
+  left: 180px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
