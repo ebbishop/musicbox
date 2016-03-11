@@ -7,7 +7,6 @@ Player.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
     controller: 'AlbumSongsCtrl',
     resolve: {
       getAlbumSongs: function(FileFactory, $stateParams){
-        console.log('getting songs for ', $stateParams.path)
         return FileFactory.getFileList($stateParams.path);
       }
     }
@@ -15,7 +14,6 @@ Player.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
 }]);
 
 Player.controller('AlbumSongsCtrl', ['$stateParams', '$state', '$scope', 'getAlbumSongs', function($stateParams, $state, $scope, getAlbumSongs){
-  console.log(getAlbumSongs);
   $scope.artist = getAlbumSongs[0].prevpath.split('/')[getAlbumSongs[0].prevpath.split('/').length-2];
   $scope.album = getAlbumSongs[0].prev;
   $scope.songs = getAlbumSongs;

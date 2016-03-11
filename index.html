@@ -15,6 +15,7 @@
   <script type="text/javascript" src="js/artists/artist.albums/artist.albums.js"></script>
   <script type="text/javascript" src="js/songs/songs.js"></script>
   <script type="text/javascript" src="js/file.factory.js"></script>
+  <script type="text/javascript" src="js/music.factory.js"></script>
 </head>
 <body ng-app="Player">
 <div id="all-content">
@@ -39,3 +40,5 @@
 </div>
 </body>
 </html>
+<!--  dir2ogg -r -q7 /home/emma/Music/demo -->
+<!-- for i in *.m4a; do avconv -i "$i" "${i/.m4a/.ogg}"; done -->

@@ -7,7 +7,6 @@ Player.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, 
     controller: 'ArtistAlbumsCtrl',
     resolve: {
       getArtistAlbums: function(FileFactory, $stateParams){
-        console.log('resolvign artistalbums for', $stateParams.path);
         return FileFactory.getFileList($stateParams.path);
       }
     }

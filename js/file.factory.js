@@ -7,18 +7,15 @@ Player.factory('FileFactory', function(){
   var defaultMusicPath = process.env.HOME + '/Music/demo';
 
   var FileFactory = {};
-  var audioFileTypes = ['.m4a', '.mp3', '.ogg', '.wav', '.mp4'];
+  var audioFileTypes = ['.ogg', '.wav'];
   var delim = '/';
   FileFactory.getFileList = function(myDir){
     if(!myDir) {
       var myDir = defaultMusicPath;
     }
-    console.log('getting files for', myDir);
     return fs.readdirAsync(myDir)
     .then(function(files){
-      console.log('reading contents of:', myDir);
       return Promise.map(files, function(file){
-        console.log('file in mydir:', file);
         if(path.extname(file)===''){
           return {
             type: 'directory',
