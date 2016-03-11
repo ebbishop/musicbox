@@ -1,2 +1,3 @@
 <h2>Albums for {{artist}}</h2>
-<one-album-item ng-repeat="album in artistAlbums" ui-sref="albumsongs({artistName: artist, albumName: album})"></one-album-item>
+
+<one-album-item ng-repeat="album in artistAlbums" ui-sref="albumsongs({path: album.thispath})"></one-album-item>

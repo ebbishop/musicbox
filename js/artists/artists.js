@@ -2,12 +2,12 @@
 
 Player.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
   $stateProvider.state('artists', {
-    url: '/artists',
+    url: '/artists/{path}',
     templateUrl: 'js/artists/artists.html',
     controller: 'ArtistListCtrl',
     resolve: {
-      artists: function(FileFactory){
-        return FileFactory.getFileList();
+      artists: function(FileFactory, $stateParams){
+        return FileFactory.getFileList($stateParams.path);
       }
     }
   });

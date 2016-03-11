@@ -2,21 +2,20 @@
 
 Player.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
   $stateProvider.state('artistalbums', {
-    url:'/artistalbums/{artistName}',
+    url:'/artist/{path}',
     templateUrl: 'js/artists/artist.albums/artist.albums.html',
     controller: 'ArtistAlbumsCtrl',
     resolve: {
       getArtistAlbums: function(FileFactory, $stateParams){
-        console.log('resolving artist albums', $stateParams.artistName);
-        return FileFactory.getFileList($stateParams.artistName);
+        console.log('resolvign artistalbums for', $stateParams.path);
+        return FileFactory.getFileList($stateParams.path);
       }
     }
   });
 }]);
 
-Player.controller('ArtistAlbumsCtrl', ['$stateParams', '$state', '$scope', 'FileFactory', 'getArtistAlbums', function($stateParams, $state, $scope, FileFactory, getArtistAlbums){
-  $scope.cache = FileFactory.cache;
-  $scope.artist = $stateParams.artistName;
+Player.controller('ArtistAlbumsCtrl', ['$stateParams', '$state', '$scope', 'getArtistAlbums', function($stateParams, $state, $scope, getArtistAlbums){
+  $scope.artist = getArtistAlbums[0].prev;
   $scope.artistAlbums = getArtistAlbums;
 }]);
 

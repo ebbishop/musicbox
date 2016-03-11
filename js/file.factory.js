@@ -7,28 +7,57 @@ Player.factory('FileFactory', function(){
   var defaultMusicPath = process.env.HOME + '/Music/demo';
 
   var FileFactory = {};
+  var audioFileTypes = ['.m4a', '.mp3', '.ogg', '.wav', '.mp4'];
+  var delim = '/';
+  FileFactory.getFileList = function(myDir){
+    if(!myDir) {
+      var myDir = defaultMusicPath;
+    }
+    console.log('getting files for', myDir);
+    return fs.readdirAsync(myDir)
+    .then(function(files){
+      console.log('reading contents of:', myDir);
+      return Promise.map(files, function(file){
+        console.log('file in mydir:', file);
+        if(path.extname(file)===''){
+          return {
+            type: 'directory',
+            name: path.basename(file),
+            prevpath: myDir,
+            prev: myDir.split(delim)[myDir.split(delim).length-1],
+            thispath: path.join(myDir, file),
+            base: ''
+          }
+        } else if (audioFileTypes.indexOf(path.extname(file))>-1){
+          return {
+            type: 'audio',
+            track: path.basename(file, path.extname(file)).split(' ')[0],
+            name: path.basename(file, path.extname(file)).split(' ').slice(1).join(' '),
+            prevpath: myDir,
+            prev: myDir.split(delim)[myDir.split(delim).length-1],
+            thispath: path.join(myDir, file),
+            base: path.extname(file)
+          }
+        } else {
+          return {
+            type: 'probs not audio',
+            name: path.basename(file, path.extname(file)),
+            prevpath: myDir,
+            prev: myDir.split(delim)[myDir.split(delim).length-1],
+            thispath: path.join(myDir, file),
+            base: path.extname(file)
+          };
+        }
 
-  FileFactory.getHome = function(){
-    return process.env.HOME;
-  };
-
-  FileFactory.getSubFileList = function(){
-    return fs.readdirAsync(defaultMusicPath)
-    .then(function(artists){
-      return fs.readdirAsync(artists)
+      });
     });
   };
 
-  FileFactory.getFileList = function(subdir){
-    console.log('getting file list for ', defaultMusicPath + '/'+ subdir);
+  FileFactory.getFileListSimple = function(subdir){
     if(!subdir) {
       var subdir = '';
     }
-    return fs.readdirAsync(defaultMusicPath + '/' + subdir);
-  };
-
-  FileFactory.getArtists = function(){
-    return fs.readdirAsync(defaultMusicPath);
+    return fs.readdirAsync(path.join(defaultMusicPath, subdir));
   };
 
   FileFactory.cache = {};
