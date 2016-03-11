@@ -11,16 +11,18 @@ Player.config(function($stateProvider){
     controller: 'ArtistListCtrl',
     resolve: {
       artists: function(FileFactory){
-        return FileFactory.getArtistList();
+        return FileFactory.getFileList();
       }
     }
   });
 });
 
 
-Player.controller('ArtistListCtrl', function($scope, artists, FileFactory){
-  $scope.home = FileFactory.getHome();
+Player.controller('ArtistListCtrl', function($scope, artists, $rootScope){
   $scope.artists = artists;
+  $scope.gotoArtistAlbums = function(artist){
+    $state.go('artistalbums', {artistName: artist});
+  };
 });
 
 
