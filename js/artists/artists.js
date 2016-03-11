@@ -1,10 +1,5 @@
 'use strict';
 
-var Promise = require('bluebird');
-var fs = Promise.promisifyAll(require('fs'));
-var path = require('path');
-
-
 Player.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
   $stateProvider.state('artists', {
     url: '/artists',
