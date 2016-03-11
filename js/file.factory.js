@@ -20,10 +20,11 @@ Player.factory('FileFactory', function(){
   };
 
   FileFactory.getFileList = function(subdir){
+    console.log('getting file list for ', defaultMusicPath + '/'+ subdir);
     if(!subdir) {
       var subdir = '';
     }
-    return fs.readdirAsync(defaultMusicPath + subdir);
+    return fs.readdirAsync(defaultMusicPath + '/' + subdir);
   };
 
   FileFactory.getArtists = function(){
@@ -32,19 +33,20 @@ Player.factory('FileFactory', function(){
 
   FileFactory.cache = {};
 
-  FileFactory.getArtistAlbums = function(){
-    return fs.readdirAsync(defaultMusicPath)
-    .then(function(artists){
-      return Promise.map(artists, function(artist){
-        var a = artist;
-        return fs.readdirAsync(defaultMusicPath + '/' + artist)
-        .then(function(files){
-          FileFactory.cache[a] = files;
-          return files;
-        })
-      })
-    });
-  };
+  // FileFactory.getArtistAlbums = function(){
+  //   return fs.readdirAsync(defaultMusicPath)
+  //   .then(function(artists){
+  //     return Promise.map(artists, function(artist){
+  //       var a = artist;
+  //       return fs.readdirAsync(defaultMusicPath + '/' + artist)
+  //       .then(function(files){
+  //         FileFactory.cache[a] = files;
+  //         return files;
+  //       })
+  //     })
+  //   });
+  // };
+
 
   return FileFactory;
 

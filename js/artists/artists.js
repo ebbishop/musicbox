@@ -5,8 +5,9 @@ var fs = Promise.promisifyAll(require('fs'));
 var path = require('path');
 
 
-Player.config(function($stateProvider){
+Player.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
   $stateProvider.state('artists', {
+    url: '/artists',
     templateUrl: 'js/artists/artists.html',
     controller: 'ArtistListCtrl',
     resolve: {
@@ -15,15 +16,12 @@ Player.config(function($stateProvider){
       }
     }
   });
-});
+}]);
 
 
-Player.controller('ArtistListCtrl', function($scope, artists, $rootScope){
+Player.controller('ArtistListCtrl', ['$scope', 'artists', function($scope, artists){
   $scope.artists = artists;
-  $scope.gotoArtistAlbums = function(artist){
-    $state.go('artistalbums', {artistName: artist});
-  };
-});
+}]);
 
 
 Player.directive('oneArtistItem', function(){

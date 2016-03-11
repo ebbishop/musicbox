@@ -1,6 +1,2 @@
-<h2>stateparams {{stateObj}}</h2>
-<div>albums {{artistAlbums}}</div>
-<div>artist {{artist}}</div>
-<div>state {{state}}</div>
-<div>cache {{cache}}</div>
-<!-- <one-album-item ng-repeat="album in artistAlbums"></one-album-item> -->
+<h2>Albums for {{artist}}</h2>
+<one-album-item ng-repeat="album in artistAlbums" ui-sref="albums({albumName: album})"></one-album-item>
