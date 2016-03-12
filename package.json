@@ -1,7 +1,7 @@
 {
-  "name": "player",
-  "version": "1.0.0",
-  "description": "",
+  "name": "MusicBox",
+  "version": "0.1.0",
+  "description": "MusicBox for linux, built with electron",
   "main": "index.js",
   "window": {
     "width": 660,
@@ -18,10 +18,15 @@
     "angular-ui-router": "^0.2.18",
     "bases": "^0.2.1",
     "bluebird": "^3.3.4",
+    "body-parser": "^1.15.0",
     "bootstrap": "^3.3.6",
+    "electron": "^0.4.1",
     "electron-prebuilt": "^0.37.0",
+    "express": "^4.13.4",
     "jquery": "^2.2.1",
     "lodash": "^4.6.1",
+    "morgan": "^1.7.0",
+    "nodemon": "^1.9.1",
     "request": "^2.69.0"
   }
 }
