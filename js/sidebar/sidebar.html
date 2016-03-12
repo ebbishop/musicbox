@@ -3,18 +3,19 @@
   <ul class="nav nav-list">
     <li class="nav-header">Browse by</li>
     <!-- {{items}} -->
-    <li ng-repeat="item in items" class="active" ui-sref="{{item.state}}">
+    <li ng-repeat="item in items" class="clickable" ui-sref="{{item.state}}">
       <a>
       <div class="glyphicon" ng-class="item.icon" ></div>
        {{item.label}}</a>
     </li>
-
-    <li class="nav-header">Spotify</li>
-    <li id="get-spotify">
-      <a href="#"><div class="glyphicon glyphicon-download-alt"></div> Surprise!</a>
+    <hr>
+    <li class="nav-header">Play a random song!</li>
+    <li ui-sref="spotify">
+      <a><div class="btn btn-default glyphicon glyphicon-headphones"></div></a>
     </li>
-    <li class="nav-header">Set directory</li>
-    <li>
+    <hr>
+    <li class="nav-header">Settings</li>
+    <li class="clickable">
       <a href="#"><div class="glyphicon glyphicon-cog"></div></a>
     </li>
   </ul>

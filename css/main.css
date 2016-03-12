@@ -30,9 +30,9 @@ sidebar{
   margin-left: 150px;
   margin-top: -8px;
   margin-right: -8px;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 60px);
   width: calc(100vw - 158px);
-  min-width: 420px;
+  min-width: 40px;
 }
 
 #main{
@@ -63,4 +63,14 @@ sidebar{
 .bar{
   /*margin: 15px 0;*/
   padding: 9px;
+}
+
+#select-window{
+  height: inherit;
+  overflow: auto;
+  padding-bottom: 40px;
+}
+
+.clickable{
+  cursor: pointer;
 }
