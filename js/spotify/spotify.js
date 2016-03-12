@@ -18,6 +18,14 @@ Player.factory('SpotifyFactory', ['$http', function($http){
     });
   };
 
+  SpotifyFactory.getAlbumInfo = function(){
+    console.log('getting album info');
+    return $http.get('https://api.spotify.com/v1/albums/6akEvsycLGftJxYudPjmqK/')
+    .then(function(res){
+      return res.data;
+    });
+  };
+
   return SpotifyFactory;
 }]);
 
@@ -28,32 +36,51 @@ Player.config(function($stateProvider){
     templateUrl: 'js/spotify/spotify.html',
     controller: 'SpotifyCtrl',
     resolve: {
-      spotifySong: function(SpotifyFactory){
+      SpotifySong: function(SpotifyFactory){
+        console.log('resolve SpotifySong')
         return SpotifyFactory.getSong();
       },
-      getArtistNames: function(spotifySong){
+      ArtistNames: function(SpotifySong){
+        console.log('resolve ArtistNames')
         var artists = [];
-        spotifySong.items[0].artists.forEach(function(artist){
+        SpotifySong.items[0].artists.forEach(function(artist){
           artists.push(artist.name);
         });
         return artists.join(', ');
       },
-      getAlbumName: function(spotifySong){
-
+      AlbumInfo: function(SpotifyFactory){
+        console.log('resolve getAlbumInfo')
+        return SpotifyFactory.getAlbumInfo();
       }
     }
   });
 });
 
 
-Player.controller('SpotifyCtrl', ['$scope', 'spotifySong', 'getArtistNames', function($scope, spotifySong, getArtistNames){
-  $scope.spotifySong = angular.fromJson(spotifySong);
-  $scope.song = spotifySong.items[0];
-  $scope.artists = getArtistNames;
-  console.log()
-  if($scope.artists.indexOf(', ')>-1){
-    $scope.multiArtist = true;
-  }else{
-    $scope.multiArtist = false;
-  }
+Player.controller('SpotifyCtrl', ['$scope', 'SpotifySong', 'ArtistNames', 'AlbumInfo', 'MusicFactory',function($scope, SpotifySong, ArtistNames, AlbumInfo, MusicFactory){
+
+  //entire song response object
+  $scope.SpotifySong = angular.fromJson(SpotifySong);
+
+  //first (only) song object
+  $scope.song = SpotifySong.items[0];
+
+  // //set url for music factory
+  // $scope.song.thispath = $scope.song.preview_url;
+
+  //array of artist names
+  $scope.artists = ArtistNames;
+  if($scope.artists.indexOf(', ')>-1){ $scope.multiArtist = true;}
+  else{ $scope.multiArtist = false; }
+
+  //entire album response object
+  $scope.SpotifyAlbum = AlbumInfo;
+
+  var playClip = function(){
+    console.log('playing!!!!!!!!!!!!!!!!!', $scope.song);
+    MusicFactory.preview($scope.song);
+  };
+
+  playClip();
+
 }]);
