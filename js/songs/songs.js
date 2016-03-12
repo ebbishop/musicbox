@@ -10,7 +10,6 @@ Player.directive('oneSongItem', ['MusicFactory', function(MusicFactory){
     link: function(scope){
       angular.extend(scope, MusicFactory);
       scope.toggle = function(song){
-        if()
         MusicFactory.start(song);
       }
     }
