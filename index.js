@@ -35,17 +35,12 @@ function createWindow () {
   expressApp.use(logger('dev'));
   expressApp.use(bodyParser.json());
   expressApp.use(bodyParser.urlencoded({ extended: false }));
-  // expressApp.use(express.static(path.join(__dirname, 'public')));
   // expressApp.use('/', routes);
-  expressApp.set('port', port);
 
-  // expressApp.use(express.static(path.join(__dirname)))
-  // expressApp.use('/', routes);
-  // expressApp.listen(1985, 'listening on 1985');
   var server = http.createServer(expressApp);
   server.listen(port);
-  server.on('listen', console.log('listening on port', port));
   server.on('error', console.error);
+  server.on('listen', console.log);
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {
     mainWindow = null;

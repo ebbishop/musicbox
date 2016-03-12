@@ -12,10 +12,9 @@ Player.factory('SpotifyFactory', ['$http', function($http){
     //This will get a random result out of the array above
     var getRandomSongs = getRandomSongsArray[_.random(0,getRandomSongsArray.length)];
 
-    //This will get a random offset number between 1 and 1000. So you get a random track. (you can change the numbers btw)
     var getRandomOffset = _.random(1, 1000);
 
-    //This is the url that gets the results out of the Spotify API. You have to put in the variables you created above.
+    //gets the results out of the Spotify API
     var url = "https://api.spotify.com/v1/search?query=" + getRandomSongs + "&offset=" + getRandomOffset + "&limit=1&type=track";
 
     console.log(url);
