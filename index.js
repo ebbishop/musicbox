@@ -1,23 +1,23 @@
 'use strict';
 
-const electron = require('electron');
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
-const express = require('express');
-const expressApp = require('express')();
-const middleware=  require('./server/middleware');
-const routes = require('./server')
-const path = require('path');
-const bodyParser = require('body-parser');
-const logger = require('morgan');
-const http = require('http');
+var electron = require('electron');
+var app = electron.app;
+var BrowserWindow = electron.BrowserWindow;
+var express = require('express');
+var expressApp = require('express')();
+var middleware=  require('./server/middleware');
+var routes = require('./server');
+var path = require('path');
+var bodyParser = require('body-parser');
+var logger = require('morgan');
+var http = require('http');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
 function onListening(port){
-  console.log('listening on port', port)
+  console.log('listening on port', port);
 }
 
 function createWindow () {
