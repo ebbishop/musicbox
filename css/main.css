@@ -1,39 +1,66 @@
 footer{
   height: 50px;
+  width: 100%;
+  padding: 8px;
+  border: 1px #f5f5f5 solid;
 }
 
-#selector-container{
-  background: #FFF;
-  -webkit-border-radius: 2px;
-  margin: -5px 1px 0 -19px;
-  height: 100%;
-  overflow: auto
+sidebar{
+  /*min-height: 1px;*/
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 150px;
+  float: left;
+  padding: 8px;
+  /*max-height: calc(100vh - 61px);*/
+}
+
+.well{
+  min-height: 1px;
+  height: calc(100vh - 100px);
+}
+
+.row{
+  height: inherit;
+}
+
+.container{
+  padding: 0 10px 8px 10px;
+  background-color: red;
+  margin-left: 150px;
+  margin-top: -8px;
+  margin-right: -8px;
+  height: calc(100vh - 50px);
+  width: calc(100vw - 158px);
+  min-width: 420px;
+}
+
+#main{
+  padding-top: 16px;
+  min-width: 420px;
 }
 
 #all-content{
-  position: absolute;
-  left: 10px;
-  top: 10px;
-  bottom: 10px;
-  right: 10px;
-  margin: 3px;
+  height: calc(100vh - 50px);
+  margin-bottom: 50px;
 }
 
 #get-spotify{
   word-wrap: break-word;
 }
 
-#sidebar-container{
-  float: left;
-  width: 160px;
+.controls{
+  margin: 0 4px 0 4px;
+  height: 30px;
+
+}
+.row{
+  margin: 0;
   padding: 8px;
+  height: calc(100vh - 86px);
 }
 
-#selector{
-  float: left;
-  position: absolute;
-  left: 180px;
-  top: 0;
-  right: 0;
-  bottom: 0;
+.bar{
+  /*margin: 15px 0;*/
+  padding: 9px;
 }

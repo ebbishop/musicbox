@@ -5,9 +5,9 @@ Player.directive('sidebar', function(){
     templateUrl: 'js/sidebar/sidebar.html',
     link: function(scope){
       scope.items = [
-        {label: 'Album', state: 'albums', icon: 'glyphicon glyphicon-book'},
-        {label: 'Artist', state: 'artists', icon: 'glyphicon glyphicon-user'},
-        {label: 'Playlist', state: 'playlists', icon: 'glyphicon glyphicon-list-alt'},
+        {label: 'Album', state: 'albums', icon: 'glyphicon-book'},
+        {label: 'Artist', state: 'artists', icon: 'glyphicon-user'},
+        {label: 'Playlist', state: 'playlists', icon: 'glyphicon-list-alt'},
       ];
     }
   };

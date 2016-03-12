@@ -1,16 +1,17 @@
-<div class="well" id="sidebar-container">
-  <ul class="nav nav-list" id="sidebar">
+<div class="header"></div>
+<div class="well">
+  <ul class="nav nav-list">
     <li class="nav-header">Browse by</li>
     <!-- {{items}} -->
     <li ng-repeat="item in items" class="active" ui-sref="{{item.state}}">
-      <a >
-      <div ng-class="{{item.icon}}" ></div>
+      <a>
+      <div class="glyphicon" ng-class="item.icon" ></div>
        {{item.label}}</a>
     </li>
 
     <li class="nav-header">Spotify</li>
     <li id="get-spotify">
-      <a href="#"><div class="glyphicon glyphicon-download-alt"></div> Song of the day!</a>
+      <a href="#"><div class="glyphicon glyphicon-download-alt"></div> Surprise!</a>
     </li>
     <li class="nav-header">Set directory</li>
     <li>
