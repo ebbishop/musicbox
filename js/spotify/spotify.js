@@ -5,18 +5,7 @@ var _ = require('lodash');
 Player.factory('SpotifyFactory', ['$http', function($http){
   var SpotifyFactory = {};
 
-  var baseUrl = 'https://api.spotify.com/v1/albums';
-  var limit = 1;
-  // var songOffset = function(album){
-
-  // };
-
-  // function generateBase62(){
-  //   var n = _.random(0,61);
-  //   return bases.toBase62(n).toString();
-  // }
-
-  SpotifyFactory.generateRandomAlbum = function(){
+  SpotifyFactory.generateRandomSong = function(){
     //make a variable with some search queries and put it in an array. (you can create more search queries.
     var getRandomSongsArray = ['%25a%25', 'a%25', '%25e%25', 'e%25', '%25i%25', 'i%25', '%25o%25', 'o%25'];
 
@@ -28,26 +17,13 @@ Player.factory('SpotifyFactory', ['$http', function($http){
 
     //This is the url that gets the results out of the Spotify API. You have to put in the variables you created above.
     var url = "https://api.spotify.com/v1/search?query=" + getRandomSongs + "&offset=" + getRandomOffset + "&limit=1&type=track";
-    // var str = '';
-    // for (var i = 0; i < 22; i++){str+= generateBase62();}
-    // return str;
+
     console.log(url);
     return url
   };
 
-  // function albumIdExists(){
-  //   var rand = generateRandomAlbum();
-  //   return $http.get('https://api.spotify.com/v1/albums/' + rand)
-  //   .then(function(res){
-  //     if(res.data) return res.data;
-
-  //   });
-  // };
-
   SpotifyFactory.getSong = function(){
-    var url = SpotifyFactory.generateRandomAlbum();
-    console.log('newurl', url);
-    // return $http.get('https://api.spotify.com/v1/albums/' + '6akEvsycLGftJxYudPjmqK' + '/tracks?offset=0&limit=1')
+    var url = SpotifyFactory.generateRandomSong();
     return $http.get(url)
     .then(function(res){
       return res.data;
@@ -55,7 +31,6 @@ Player.factory('SpotifyFactory', ['$http', function($http){
   };
 
   SpotifyFactory.getAlbumInfo = function(albumId){
-    console.log('getting album info');
     return $http.get('https://api.spotify.com/v1/albums/' + albumId + '/')
     .then(function(res){
       return res.data;
@@ -73,21 +48,16 @@ Player.config(function($stateProvider){
     controller: 'SpotifyCtrl',
     resolve: {
       SpotifySong: function(SpotifyFactory){
-        console.log('resolve SpotifySong')
         return SpotifyFactory.getSong();
       },
       ArtistNames: function(SpotifySong){
-        console.log('resolve ArtistNames after SpotifySong', SpotifySong.tracks.items[0].album);
         var artists = [];
         SpotifySong.tracks.items[0].artists.forEach(function(artist){
           artists.push(artist.name);
         });
-        console.log(artists);
         return artists.join(', ');
       },
       AlbumInfo: function(SpotifyFactory, SpotifySong){
-        console.log('resolve getAlbumInfo');
-        // SpotifySong.tracks.items[0].album.id
         return SpotifyFactory.getAlbumInfo(SpotifySong.tracks.items[0].album.id);
       }
     }
@@ -103,9 +73,6 @@ Player.controller('SpotifyCtrl', ['$scope', 'SpotifySong', 'ArtistNames', 'Album
   //first (only) song object
   $scope.song = SpotifySong.tracks.items[0];
 
-  // //set url for music factory
-  // $scope.song.thispath = $scope.song.preview_url;
-
   //array of artist names
   $scope.artists = ArtistNames;
   if($scope.artists.indexOf(', ')>-1){ $scope.multiArtist = true;}
@@ -113,10 +80,8 @@ Player.controller('SpotifyCtrl', ['$scope', 'SpotifySong', 'ArtistNames', 'Album
 
   //entire album response object
   $scope.album = angular.fromJson(AlbumInfo);
-  // $scope.album = angular.fromJson(AlbumInfo).album;
-  // console.log($scope.SpotifyAlbum.album);
+
   var playClip = function(){
-    console.log('playing!!!!!!!!!!!!!!!!!', $scope.song);
     MusicFactory.preview($scope.song);
   };
 
