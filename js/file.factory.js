@@ -2,12 +2,13 @@
 var Promise = require('bluebird');
 var fs = Promise.promisifyAll(require('fs'));
 var path = require('path');
+var id3 = require('id3js');
 
 Player.factory('FileFactory', function(){
   var defaultMusicPath = process.env.HOME + '/Music/demo';
 
   var FileFactory = {};
-  var audioFileTypes = ['.ogg', '.wav'];
+  var audioFileTypes = ['.ogg', '.wav', '.mp3'];
   var delim = '/';
   FileFactory.getFileList = function(myDir){
     if(!myDir) {
@@ -59,19 +60,19 @@ Player.factory('FileFactory', function(){
 
   FileFactory.cache = {};
 
-  // FileFactory.getArtistAlbums = function(){
-  //   return fs.readdirAsync(defaultMusicPath)
-  //   .then(function(artists){
-  //     return Promise.map(artists, function(artist){
-  //       var a = artist;
-  //       return fs.readdirAsync(defaultMusicPath + '/' + artist)
-  //       .then(function(files){
-  //         FileFactory.cache[a] = files;
-  //         return files;
-  //       })
-  //     })
-  //   });
-  // };
+  FileFactory.getArtistAlbums = function(){
+    return fs.readdirAsync(defaultMusicPath)
+    .then(function(artists){
+      return Promise.map(artists, function(artist){
+        var a = artist;
+        return fs.readdirAsync(defaultMusicPath + '/' + artist)
+        .then(function(files){
+          FileFactory.cache[a] = files;
+          return files;
+        })
+      })
+    });
+  };
 
 
   return FileFactory;

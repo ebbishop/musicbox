@@ -5,7 +5,7 @@ Player.factory('MusicFactory', function($rootScope){
 
   var audio = document.createElement('audio');
   // audio.controls = true;
-  var playing = false;
+  var isPlaying = false;
   var currentSong;
   var progress = 0;
 
@@ -27,21 +27,25 @@ Player.factory('MusicFactory', function($rootScope){
     audio.load();
     audio.play();
     currentSong = song;
-    playing = true;
+    isPlaying = true;
   };
 
   MusicFactory.getCurrentSong = function(){
     return currentSong;
+  };
+
+  MusicFactory.getIsPlaying = function(){
+    return isPlaying;
   }
 
   MusicFactory.pause = function(){
     audio.pause();
-    playing = false;
+    isPlaying = false;
   };
 
   MusicFactory.resume = function(){
     audio.play();
-    playing = true;
+    isPlaying = true;
   };
 
   MusicFactory.getProgress = function () {

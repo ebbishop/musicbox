@@ -5,15 +5,20 @@ Player.directive('oneSongItem', ['MusicFactory', function(MusicFactory){
     restrict: 'E',
     templateUrl: 'js/songs/one-song-item.html',
     scope: {
-      song: '='
+      song: '=',
+      songlist: '='
     },
     link: function(scope){
       angular.extend(scope, MusicFactory);
       scope.toggle = function(song){
-        MusicFactory.start(song);
+        if(scope.getCurrentSong()===song){
+          if(scope.getIsPlaying()) {MusicFactory.pause();}
+          else{ MusicFactory.resume()}
+        }else{
+          MusicFactory.start(song);
+        }
       }
     }
   };
 }]);
-
 
