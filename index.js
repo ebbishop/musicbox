@@ -65,9 +65,9 @@ app.on('activate', function () {
 });
 
 
-mainWindow.on('app-command', function(e, cmd) {
-  // Navigate the window back when the user hits their mouse back button
-  if (cmd === 'browser-backward' && mainWindow.webContents.canGoBack()) {
-    mainWindow.webContents.goBack();
-  }
-});
+// mainWindow.on('app-command', function(e, cmd) {
+//   // Navigate the window back when the user hits their mouse back button
+//   if (cmd === 'browser-backward' && mainWindow.webContents.canGoBack()) {
+//     mainWindow.webContents.goBack();
+//   }
+// });
