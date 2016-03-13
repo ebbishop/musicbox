@@ -25,7 +25,7 @@ Player.factory('AuthFactory', ['$http', function($http){
 Player.config(function($stateProvider){
   $stateProvider.state('login', {
     url: '/login',
-    templateUrl: '/js/spotify/login.html',
+    templateUrl: 'js/spotify/login.html',
     controller: 'LoginCtrl'
   });
 });

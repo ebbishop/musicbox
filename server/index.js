@@ -7,6 +7,7 @@ var querystring = require('querystring');
 
 var client_id = '10c1ccf8e1234e2a8864ceb38cb4ba04';
 var client_secret = '7a0f3b95ba774145abad51bdc210ef46';
+var redirect_uri = 'http://localhost:1985/spotify';
 var state_key = 'spotify_auth_state';
 
 router.use(cookieParser());
@@ -22,6 +23,7 @@ var generateRandomString = function(length) {
 };
 
 router.get('/api/login', function(req, res, next){
+  console.log('in api login');
   var state = generateRandomString(16);
   res.cookie(state_key, state);
   var scope = 'user-read-private user-read-email';
@@ -42,7 +44,7 @@ router.get('/api/callback', function(req, res, next){
   var storedState = req.cookies ? req.cookies[stateKey] : null;
 
   if(state === null || state!== storedState){
-    rres.redirect('/#' +
+    res.redirect('/#' +
       querystring.stringify({
         error: 'state_mismatch'
       }));

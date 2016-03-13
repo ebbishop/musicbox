@@ -1,6 +1,6 @@
 <div class="signin-container">
   <div class="buffer local">
-    <form ng-submit="submit()">
+    <form ng-submit="login(userInfo)">
       <div class="form-group">
         <label>email</label>
         <input type="text" class="form-control" ng-model="userInfo.email" required />
@@ -16,7 +16,7 @@
     <div class="back-line"><span>OR</span></div>
   </div>
   <div class="buffer oauth">
-    <p><a href="/api/login" class="btn btn-social btn-spotify">
+    <p><a href="http://localhost:1985/api/login" class="btn btn-social btn-spotify">
       <i class="fa fa-spotify"></i>
       <span>Sign in with Spotify</span>
     </a></p>

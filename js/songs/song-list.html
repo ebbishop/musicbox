@@ -1,0 +1,6 @@
+<table class="clearfix table">
+  <tr class="clickable" ng-repeat="song in songs" song="song" songlist="songs" ng-click="toggle(song, songs)" ng-class=
+"{active: song === getCurrentSong()}">
+    <td><a>{{song.name}}</a><small>{{song.base}}</small></td>
+  </tr>
+</table>

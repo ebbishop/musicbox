@@ -6,9 +6,9 @@ Player.directive('sidebar', ['SpotifyFactory', function(SpotifyFactory){
     // controller: 'SidebarCtrl',
     link: function(scope){
       scope.items = [
-        {label: 'Album', state: 'albums', icon: 'glyphicon-book'},
+        // {label: 'Album', state: 'albums', icon: 'glyphicon-book'},
         {label: 'Artist', state: 'artists', icon: 'glyphicon-user'},
-        {label: 'Playlist', state: 'playlists', icon: 'glyphicon-list-alt'},
+        // {label: 'Playlist', state: 'playlists', icon: 'glyphicon-list-alt'},
       ];
     }
   };
