@@ -103,9 +103,14 @@ sidebar{
   height: 1px;
 }
 
+ul{
+  height: inherit;
+}
+
 one-artist-item > li, one-album-item > li, one-song-item > li{
   padding: 3px 15px;
   text-decoration: none;
+  /*float: left;*/
 }
 one-artist-item:after{
   content: "\A";
