@@ -13,3 +13,4 @@ Player.directive('sidebar', ['SpotifyFactory', function(SpotifyFactory){
     }
   };
 }]);
+

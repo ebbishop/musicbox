@@ -8,7 +8,7 @@ Player.directive('player', ['MusicFactory', function (MusicFactory) {
     link: function (scope) {
       angular.extend(scope, MusicFactory);
       scope.toggle = function () {
-        if ( MusicFactory.isPlaying() ) MusicFactory.pause();
+        if ( MusicFactory.getIsPlaying() ) MusicFactory.pause();
           else MusicFactory.resume();
       };
       scope.getPercent = function () {
