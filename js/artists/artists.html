@@ -1,2 +1,6 @@
 <h2>All Artists:</h2>
-<ul><one-artist-item ng-repeat="artist in artists" ui-sref="artistalbums({path: artist.thispath})"></one-artist-item></ul>
+<table class="table">
+  <tr class="clickable" ng-repeat="artist in artists" ui-sref="artistalbums({path: artist.thispath})">
+    <td><a>{{artist.name}}</a></td>
+  </tr>
+</table>

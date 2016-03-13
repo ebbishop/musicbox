@@ -1,21 +1,20 @@
 <div class="header"></div>
 <div class="well">
   <ul class="nav nav-list">
-    <li class="nav-header">Browse by</li>
+    <li class="nav-header h4">Browse by</li>
     <!-- {{items}} -->
     <li ng-repeat="item in items" class="clickable" ui-sref="{{item.state}}">
       <a>
-      <div class="glyphicon" ng-class="item.icon" ></div>
        {{item.label}}</a>
     </li>
     <hr>
-    <li class="nav-header">Spotify!</li>
-    <li ui-sref="spotify">
-      <a><div class="btn btn-default glyphicon glyphicon-headphones"></div>Clip</a>
-    </li>
-<!--     <li ui-sref="spotifylister">
-      <a><div class="btn btn-default glyphicon glyphicon-headphones"></div>Clip</a>
+    <li class="nav-header">Surprise me!</li>
+<!--     <li ui-sref="login">
+      <a><div class="btn btn-default glyphicon glyphicon-user"></div></a>
     </li> -->
+    <li ui-sref="spotify">
+      <a><div class="glyphicon glyphicon-question-sign"></div></a>
+    </li>
     <hr>
     <li class="nav-header">Settings</li>
     <li class="clickable">
