@@ -1,6 +1,7 @@
 body{
   background-color: #265C73;
   color: #102F3C;
+  font-size: 15px;
 }
 
 footer{
@@ -12,13 +13,15 @@ footer{
 }
 
 sidebar{
-  /*min-height: 1px;*/
   padding-right: 15px;
   padding-left: 15px;
   width: 150px;
   float: left;
   padding: 8px;
-  /*max-height: calc(100vh - 61px);*/
+}
+
+.spotify{
+  font-size: 40px;
 }
 
 .progress{
