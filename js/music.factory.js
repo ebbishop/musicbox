@@ -42,6 +42,7 @@ Player.factory('MusicFactory', function($rootScope){
   }
 
   MusicFactory.pause = function(){
+    console.log('pause in MusicFactory');
     audio.pause();
     isPlaying = false;
   };

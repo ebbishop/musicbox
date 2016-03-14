@@ -1,5 +1,12 @@
 <h2>{{song.name}}</h2>
-<div>Artist{{multiArtist ? "s" : ""}}: {{artists}}</div>
-<div>Album: {{album.name}}</div>
-<div>Track#: {{song.track_number}}</div>
+<div><strong>Artist{{multiArtist ? "s" : ""}}:</strong> {{artists}}</div>
+<div><strong>Album:</strong> {{album.name}}</div>
+<div><small><strong>Track:</strong></small> {{song.track_number}}</div>
+<br>
+<br>
+<div class="controls">Like what you hear?</div>
+<button class="clickable btn btn-default" external-link="{{song.artists[0].external_urls.spotify}}" ng-click="pause()">More from this artist</button>
 
+<br>
+<br>
+<button class="clickable btn btn-default" ng-click="reload()">Nope! Try again</button>

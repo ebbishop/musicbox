@@ -1,6 +1,7 @@
 'use strict';
 var bases = require('bases');
 var _ = require('lodash');
+var shell = require('shell');
 
 Player.factory('SpotifyFactory', ['$http', function($http){
   var SpotifyFactory = {};
@@ -58,13 +59,16 @@ Player.config(function($stateProvider){
       },
       AlbumInfo: function(SpotifyFactory, SpotifySong){
         return SpotifyFactory.getAlbumInfo(SpotifySong.tracks.items[0].album.id);
+      },
+      PlayClip: function(MusicFactory, SpotifySong){
+        MusicFactory.preview(SpotifySong.tracks.items[0]);
       }
     }
   });
 });
 
 
-Player.controller('SpotifyCtrl', ['$scope', 'SpotifySong', 'ArtistNames', 'AlbumInfo', 'MusicFactory',function($scope, SpotifySong, ArtistNames, AlbumInfo, MusicFactory){
+Player.controller('SpotifyCtrl', ['$scope', 'SpotifySong', 'ArtistNames', 'AlbumInfo', 'MusicFactory','$state', function($scope, SpotifySong, ArtistNames, AlbumInfo, MusicFactory, $state){
 
   //entire song response object
   $scope.SpotifySong = angular.fromJson(SpotifySong);
@@ -80,10 +84,21 @@ Player.controller('SpotifyCtrl', ['$scope', 'SpotifySong', 'ArtistNames', 'Album
   //entire album response object
   $scope.album = angular.fromJson(AlbumInfo);
 
-  var playClip = function(){
-    MusicFactory.preview($scope.song);
-  };
+  $scope.pause = function(){
+    console.log('calling pause in spotify');
+    MusicFactory.pause();
+  }
 
-  playClip();
+  $scope.reload = function(){
+    console.log('hit reload!');
+    // $route.reload();
+    // $window.location.reload();
+    $state.reload();
+  }
+
+  // $scope.openExternal = function(song){
+  //   console.log('open external', song.artists[0].external_urls.spotify);
+  //   shell.openExternal(song.artists[0].external_urls.spotify);
+  // };
 
 }]);
